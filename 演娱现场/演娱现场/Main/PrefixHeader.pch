@@ -1,0 +1,114 @@
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+#import "UILabel+Extension.h"
+#import "NSString+LTMD5.h"
+#import "NSString+XHMD5.h"
+#import "UIView+Extension.h"
+#import "UIBarButtonItem+Extension.h"
+#import "UIColor+Hex.h"
+#import "MJRefresh.h"
+#import "NSDictionary+Extension.h"
+#import "NSString+Extension.h"
+#import "SDAutoLayout.h"
+#import "WyBut.h"
+#import "WYHttpTool.h"
+#import "LTNavIgationController.h"
+#import "MJExtension.h"
+#import "UIControl+Extension.h"
+#import "TKAlertCenter.h"
+/********************网络请求*****************/
+//发布话题
+#define SAVETOPIC [ZBURL stringByAppendingString:@"topic/saveTopic.do"]
+//获取首页数据
+#define HOMEURL [ZBURL stringByAppendingString:@"homePage/getHomePage.do?currPage=%zd"]
+//直播详情
+#define EDITORURL [ZBURL stringByAppendingString:@"liveEditorDetail/getLiveDetail?id=%@&busType=%@"]
+//获取验证码
+#define GETVERIFYCODE [ZBURL stringByAppendingString:@"mobile/getVerifyCode.do"]
+//注册
+#define REGIST_URL [ZBURL stringByAppendingString:@"mobile/register.do"]
+//登陆
+#define LOGIN [ZBURL stringByAppendingString:@"mobile/login.do"]
+//侧边栏
+#define SIDE_LIST [ZBURL stringByAppendingString:@"sys_dic/getAppMenu.do"]
+//#define DEBUG
+/*****************主色调*****************/
+#define NAVBG [UIColor colorWithHexString:@"2e2e2e"]
+#define MEBG [UIColor colorWithHexString:@"252525"]
+#define MENR [UIColor colorWithHexString:@"2b2f32"]
+#define LIVEDATE [UIColor colorWithHexString:@"595959"]
+#define LIVECONTENT [UIColor colorWithHexString:@"717171"]
+#define LIVETTOPLABEL [UIColor colorWithHexString:@"ffffff"]
+#define HOMETITLE [UIColor colorWithHexString:@"7b7b7b"]
+#define HOMETEXT [UIColor colorWithHexString:@"000000"]
+#define HOMEBOTTOMWIRE [UIColor colorWithHexString:@"010101"]
+#define HOMELABELCOLOR [UIColor colorWithHexString:@"f7f7f7"]
+#define HOMECELLBG [UIColor colorWithHexString:@"252525"]
+#define HOMEWIRE [UIColor colorWithHexString:@"545454"]
+#define HOMEPARTITION [UIColor colorWithHexString:@"181818"]
+#define HOMELABELBG [UIColor colorWithHexString:@"6a6a6a"]
+/*****************网络请求的链接**********************/
+/***************自动更新的URL地址*****************/
+#define UrlAdd @"itms-services://?action=download-manifest&url=itms-services://?action=download-manifest&url="
+/***************自动更新的URL地址*****************/
+//快捷方式的路径
+#define shortCutPath [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)lastObject]stringByAppendingPathComponent:@"shortCutPath.archive"]
+//城市的沙盒路径
+#define cityPath [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)lastObject]stringByAppendingPathComponent:@"cityPath.archive"]
+//设置字体
+//第三方弹框的常量
+#define MainScreenWidth [UIScreen mainScreen].bounds.size.width
+#define MainScreenHeight [UIScreen mainScreen].bounds.size.height-20
+//登陆成功后的token
+#define USER [[NSUserDefaults standardUserDefaults]objectForKey:@"token"]
+//登陆后的密码
+#define PASSWORD [[NSUserDefaults standardUserDefaults]objectForKey:@"PassWord"]
+//**************************字体大小****************************
+#define Font10 [UIFont systemFontOfSize:10]
+#define Font12 [UIFont systemFontOfSize:12]
+#define Font13 [UIFont systemFontOfSize:13]
+#define Font14 [UIFont systemFontOfSize:14]
+#define Font15 [UIFont systemFontOfSize:15]
+#define Font16 [UIFont systemFontOfSize:16]
+#define Font17 [UIFont systemFontOfSize:17]
+#define Font18 [UIFont systemFontOfSize:18]
+#define Font19 [UIFont systemFontOfSize:19]
+#define Font20 [UIFont systemFontOfSize:20]
+#define Font21 [UIFont systemFontOfSize:21]
+#define Font26 [UIFont systemFontOfSize:26]
+#define Font30 [UIFont systemFontOfSize:30]
+#define Font40 [UIFont systemFontOfSize:40]
+#define CFont14 [UIFont boldSystemFontOfSize:14]
+#define CFont15 [UIFont boldSystemFontOfSize:15]
+#define CFont16 [UIFont boldSystemFontOfSize:16]
+#define CFont17 [UIFont boldSystemFontOfSize:17]
+#define CFont18 [UIFont boldSystemFontOfSize:18]
+#define CFont20 [UIFont boldSystemFontOfSize:20]
+//**************************字体大小****************************
+#define iPhone5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
+//屏幕的宽高常量
+#define SCREEN ([UIScreen mainScreen].bounds.size)
+#define ScreenWidth [[UIScreen mainScreen] bounds].size.width         //屏幕宽度
+#define ScreenHeight [[UIScreen mainScreen] bounds].size.height       //屏幕高度
+//自定义RGB颜色
+#define WYRGb(r,g,b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
+#define WYARC WYRGb(arc4random_uniform(256), arc4random_uniform(256), arc4random_uniform(256))
+#define WYmargin 10
+#define WYmargin2 5
+#define mainBg [UIColor colorWithHexString:@"#fe840f"]
+#define pageSize @"20"
+#define tabBarH 49
+#define font14Andfont12 ScreenWidth > 320 ? Font14 : Font12
+
+#endif /* PrefixHeader_pch */
+//自定义log
+#ifdef DEBUG //处于开发阶段
+#define ZBURL @"http://10.0.10.50:9321/LiveApp/"//内网
+//#define WYLog(...) NSLog(__VA_ARGS__)
+#define WYLog(format, ...) printf("\n[%s] %s [第%d行] %s\n", __TIME__, __FUNCTION__, __LINE__, [[NSString stringWithFormat:format, ## __VA_ARGS__] UTF8String]);
+#else //处于开发阶段
+//网络请求
+#define ZBURL @"http://111.198.157.32:9321/LiveApp/"//外网
+#define WYLog(...)
+
+#endif
