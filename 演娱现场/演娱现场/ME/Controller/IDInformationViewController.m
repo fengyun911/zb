@@ -108,13 +108,48 @@
     [bottomRightCredentialsBut setBackgroundImage:[UIImage imageNamed:@"点此上传"] forState:UIControlStateNormal];
     [bottomView addSubview:bottomRightCredentialsBut];
     bottomRightCredentialsBut.sd_layout.leftSpaceToView( bottomLeftCredentialsBut,WYmargin2).topSpaceToView(bottomViewInformationWire,WYmargin*2+WYmargin2).widthRatioToView(bottomView,0.3).heightEqualToWidth();
+    
+    //手持照片上传的view
+    UIView *partitionView = [[UIView alloc]init];
+    partitionView.frame = CGRectMake(0, CGRectGetMaxY(bottomView.frame)+WYmargin2+WYmargin, ScreenWidth, ScreenWidth*0.618);
+    partitionView.backgroundColor = [UIColor whiteColor];
+    [self.scrollView addSubview:partitionView];
+    
+    //银行卡上传
+    UILabel *handImage = [[UILabel alloc]init];
+    handImage.font = Font16;
+    handImage.text = @"手持照片上传";
+    handImage.textAlignment = NSTextAlignmentLeft;
+    [partitionView addSubview:handImage];
+    handImage.sd_layout.leftSpaceToView(partitionView,WYmargin).topEqualToView(partitionView).rightEqualToView(partitionView).heightRatioToView(partitionView,0.25);
+    //设置分割线
+    UIView *partitionViewInformationWire = [[UIView alloc]init];
+    partitionViewInformationWire.backgroundColor = [UIColor colorWithHexString:@"eeeeee"];
+    [partitionView addSubview:partitionViewInformationWire];
+    partitionViewInformationWire.sd_layout.leftSpaceToView(partitionView,WYmargin).topSpaceToView(handImage,0).rightSpaceToView(partitionView,WYmargin).heightIs(1);
+    //证件图片
+    UILabel * partitionViewCredentials = [[UILabel alloc]init];
+    partitionViewCredentials.font = Font16;
+    partitionViewCredentials.text = @"证件图片";
+    partitionViewCredentials.textAlignment = NSTextAlignmentLeft;
+    [partitionView addSubview:partitionViewCredentials];
+    partitionViewCredentials.sd_layout.leftSpaceToView(partitionView,WYmargin).topSpaceToView(partitionViewInformationWire,0).widthRatioToView(partitionView,0.25).heightRatioToView(partitionView,0.25);
+    
+    //左面的证件图片
+    WyBut * partitionViewLeftCredentialsBut = [[WyBut alloc]init];
+    [partitionViewLeftCredentialsBut setBackgroundImage:[UIImage imageNamed:@"点此上传"] forState:UIControlStateNormal];
+    [partitionView addSubview:partitionViewLeftCredentialsBut];
+    partitionViewLeftCredentialsBut.sd_layout.leftSpaceToView(partitionViewCredentials,0).topSpaceToView(partitionViewInformationWire,WYmargin*2+WYmargin2).widthRatioToView(partitionView,0.3).heightEqualToWidth();
+    
+
+    
     //顶部的显示文字
     UILabel *bottomLabel = [[UILabel alloc]init];
     bottomLabel.font = Font12;
     bottomLabel.numberOfLines = 2;
     bottomLabel.textColor = WYRGb(0, 113, 236);
     
-    bottomLabel.frame = CGRectMake(WYmargin, CGRectGetMaxY(bottomView.frame), ScreenWidth- WYmargin*2, 30);
+    bottomLabel.frame = CGRectMake(WYmargin, CGRectGetMaxY(partitionView.frame), ScreenWidth- WYmargin*2, 30);
     bottomLabel.text = @"*请上传xx(130*****888)对应的身份证以及银行卡正反面照片";
    
     

@@ -81,4 +81,8 @@
 - (void)setupLeftBut:(NSString *)butStr{
     [_topLeftBut setImage:[UIImage imageNamed:butStr] forState:UIControlStateNormal];
 }
+
+- (void)setupRightBut:(NSString *)butStr{
+    [_toprightBut setTitle:butStr forState:UIControlStateNormal];
+}
 @end

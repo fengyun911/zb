@@ -5,11 +5,12 @@
 //  Created by 汪洋 on 2017/3/8.
 //  Copyright © 2017年 yyxc. All rights reserved.
 //
-
 #import "MeInformationViewController.h"
 #import "UIImageView+WebCache.h"
-@interface MeInformationViewController ()
-
+#import "personInformationModifyViewController.h"
+@interface MeInformationViewController ()<UIActionSheetDelegate>
+@property(nonatomic,weak)UIImageView *imageLabelView;
+@property(nonatomic,weak)UILabel *nameLabel;
 @end
 
 @implementation MeInformationViewController
@@ -23,6 +24,15 @@
 }
 #pragma mark --------设置页面
 - (void)setupUi{
+    //设置右边保存按钮
+    WyBut *rightBut = [[WyBut alloc]init];
+    rightBut.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+    [rightBut addTarget:self action:@selector(rightButClick) forControlEvents:UIControlEventTouchUpInside];
+    rightBut.frame = CGRectMake(0, 0, 80, 44);
+    rightBut.titleLabel.font = Font18;
+    [rightBut setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [rightBut setTitle:@"保存" forState:UIControlStateNormal];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:rightBut];
     //顶部的分割View
     UIView *topView = [[UIView alloc]init];
     topView.backgroundColor = [UIColor colorWithHexString:@"ececec"];
@@ -35,6 +45,8 @@
     
     //设置头像图片
     UIImageView *imageLabelView = [[UIImageView alloc]init];
+    imageLabelView.contentMode = UIViewContentModeScaleAspectFill;
+    _imageLabelView =imageLabelView;
     [self.view addSubview:imageLabelView];
     [imageLabelView sd_setImageWithURL:[NSURL URLWithString:@"https://ss2.baidu.com/-vo3dSag_xI4khGko9WTAnF6hhy/super/whfpf%3D425%2C260%2C50/sign=a4b3d7085dee3d6d2293d48b252b5910/0e2442a7d933c89524cd5cd4d51373f0830200ea.jpg"] placeholderImage:nil];
     imageLabelView.sd_layout.rightSpaceToView(self.view,WYmargin*4).topSpaceToView(topView,WYmargin).widthIs(46).heightIs(46);
@@ -51,6 +63,7 @@
 /*****************设置姓名******************/
     //设置姓名
     UILabel *nameLabel = [self addLabel:@"    姓名"];
+    _nameLabel = nameLabel;
     nameLabel.sd_layout.topSpaceToView(imageLabelWire,0).leftEqualToView(self.view).rightEqualToView(self.view).heightIs(48.5);
     
      //设置内容
@@ -176,30 +189,39 @@
 }
 #pragma mark --------按钮点击
 - (void)wybutClick:(WyBut *)but{
+    personInformationModifyViewController *personInformationModify = [[personInformationModifyViewController alloc]init];
+    
     
     switch (but.tag) {
         case 0:{//头像点击
-           
+         //弹出头像选择框
+            UIActionSheet* actionSheet = [[UIActionSheet alloc]initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"拍照",@"相册", nil];
+            [actionSheet showInView:[UIApplication sharedApplication].keyWindow];
         }
             break;
         case 1:{//姓名点击
+            personInformationModify.nameLabel=self.nameLabel;
+            personInformationModify.title = @"姓名";
+            [self.navigationController pushViewController:personInformationModify animated:YES];
             
         }
             break;
         case 2:{//身份证号
-            
+            personInformationModify.title = @"身份证号";
         }
             break;
         case 3:{//手机号码
+            personInformationModify.title = @"手机号码";
             
         }
             break;
         case 4:{//邮箱
-            
+            personInformationModify.title = @"邮箱";
+
         }
             break;
         case 5:{//地址
-            
+             personInformationModify.title = @"地址";
         }
             break;
         case 6:{//密码
@@ -212,4 +234,48 @@
     }
 
 }
+#pragma mark--------保存按钮点击
+- (void)rightButClick{
+    //发送网络请求
+    
+}
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    
+    switch (buttonIndex) {//跳转页面
+        case 0:{//拍照
+            UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+            imagePicker.delegate = self;
+            //                imagePicker.allowsEditing = YES; //允许照片可以被编辑
+            imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+            //            [self presentModalViewController:imagePicker animated:YES];
+            [self presentViewController:imagePicker animated:YES completion:nil];
+        }
+            break;
+        case 1:{//相册
+            //进入相册
+            
+            UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+            imagePicker.delegate = self;
+            //                imagePicker.allowsEditing = YES; //允许照片可以被编辑
+            imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            //            [self presentModalViewController:imagePicker animated:YES];
+            [self presentViewController:imagePicker animated:YES completion:nil];
+        }
+            
+            break;
+        default:
+            break;
+    }
+}
+#pragma mark --------相册的代理方法
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    //设置返回图片的尺寸
+    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    self.imageLabelView.image = image;
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+
 @end

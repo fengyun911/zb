@@ -12,6 +12,7 @@
 @property(nonatomic,weak)UIImageView *leftImageView;
 @property(nonatomic,weak)UILabel *labelTitle;
 @property(nonatomic,weak)UILabel *labelText;
+@property(nonatomic,weak)UIButton *leftBut;
 @end
 @implementation TopicCell
 + (instancetype)cellWithTableView:(UITableView *)tableView{
@@ -57,26 +58,49 @@
     [self.contentView addSubview:labelTitle];
     labelTitle.font = Font16;
     labelTitle.textColor = [UIColor colorWithHexString:@"c4c4c4"];
-    labelTitle.text = @"测试显示标题文字";
-    labelTitle.sd_layout.leftSpaceToView(leftImageView,WYmargin).rightSpaceToView(self.contentView,WYmargin).topSpaceToView(self.contentView,WYmargin).heightIs(22);
+    labelTitle.sd_layout.leftSpaceToView(leftImageView,WYmargin).rightSpaceToView(self.contentView,WYmargin).topSpaceToView(self.contentView,11+WYmargin).heightIs(22);
     
     //设置内容
     UILabel *labelText = [[UILabel alloc]init];
     _labelText =labelText;
-    [self.contentView addSubview:labelTitle];
-    labelTitle.font = Font16;
-    labelTitle.textColor = [UIColor colorWithHexString:@"c4c4c4"];
-    labelTitle.sd_layout.leftSpaceToView(leftImageView,WYmargin).rightSpaceToView(self.contentView,WYmargin).topSpaceToView(leftImageView,0).autoHeightRatio(0);
+    [self.contentView addSubview:labelText];
+    labelText.font = Font16;
+    labelText.textColor = [UIColor colorWithHexString:@"c4c4c4"];
+    labelText.sd_layout.leftSpaceToView(leftImageView,WYmargin).rightSpaceToView(self.contentView,WYmargin).topSpaceToView(labelTitle,WYmargin).autoHeightRatio(0);
+    //点赞和发表话题
+    UIButton *rightBut = [[UIButton alloc]init];
+    [rightBut addTarget:self action:@selector(rightButClcik) forControlEvents:UIControlEventTouchUpInside];
+    [self.contentView addSubview:rightBut];
+    rightBut.sd_layout.rightSpaceToView(self.contentView,WYmargin).heightIs(30).widthEqualToHeight().topSpaceToView(labelText,WYmargin);
+    [rightBut setImage:[UIImage imageNamed:@"直播-评论"] forState:UIControlStateNormal];
     
-        [self setupAutoHeightWithBottomView:labelTitle bottomMargin:WYmargin*2];
-//    @property(nonatomic,weak)UIImageView *leftImageView;
-//    @property(nonatomic,weak)UILabel *labelTitle;
-//    @property(nonatomic,weak)UILabel *labelText;
-    
+    UIButton *leftBut = [[UIButton alloc]init];
+    [leftBut addTarget:self action:@selector(leftButClick) forControlEvents:UIControlEventTouchUpInside];
+    _leftBut = leftBut;
+    [leftBut setTitleColor:[UIColor colorWithHexString:@"c4c4c4"] forState:UIControlStateNormal];
+    [self.contentView addSubview:leftBut];
+    leftBut.sd_layout.rightSpaceToView(rightBut,WYmargin*2).heightIs(30).widthIs(60).topSpaceToView(labelText,WYmargin);
+    [leftBut setImage:[UIImage imageNamed:@"心"] forState:UIControlStateNormal];
+    leftBut.contentHorizontalAlignment =UIControlContentHorizontalAlignmentRight;
+    leftBut.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, WYmargin);
+    [self setupAutoHeightWithBottomView:rightBut bottomMargin:WYmargin];
+
 }
 #pragma mark --------设置view
 - (void)setModel:(commentListModel *)model{
     _model = model;
-    _labelTitle.text =model.cContent;
+    _labelTitle.text = [NSString stringWithFormat:@"%@ | %@",model.cName,model.cDate];
+    _labelText.text =model.cContent;
+    [_leftBut setTitle:@"112" forState:UIControlStateNormal];
+   
+}
+#pragma mark--------点赞按钮点击
+- (void)leftButClick{
+
+}
+#pragma mark--------发表评论按钮点击
+- (void)rigthButClick{
+
+
 }
 @end

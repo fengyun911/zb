@@ -51,6 +51,9 @@
 		D30B20561E89117D0063EA8E /* correlateListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D30B20541E89117D0063EA8E /* correlateListModel.m */; };
 		D30B20591E8911930063EA8E /* commentListModel.h in Headers */ = {isa = PBXBuildFile; fileRef = D30B20571E8911930063EA8E /* commentListModel.h */; };
 		D30B205A1E8911930063EA8E /* commentListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D30B20581E8911930063EA8E /* commentListModel.m */; };
+		D30B38F41E95EBEA00DFBEA8 /* LoginController.h in Headers */ = {isa = PBXBuildFile; fileRef = D30B38F11E95EBEA00DFBEA8 /* LoginController.h */; };
+		D30B38F51E95EBEA00DFBEA8 /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = D30B38F21E95EBEA00DFBEA8 /* LoginController.m */; };
+		D30B38F61E95EBEA00DFBEA8 /* LoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D30B38F31E95EBEA00DFBEA8 /* LoginController.xib */; };
 		D30CC6301E64279500BB2F25 /* CommentOneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D30CC62F1E64279500BB2F25 /* CommentOneCell.m */; };
 		D317DCFC1E78D64400971751 /* IntegralCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D317DCFB1E78D64400971751 /* IntegralCell.m */; };
 		D317DD021E78E94500971751 /* perToppicListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D317DD011E78E94500971751 /* perToppicListModel.m */; };
@@ -79,15 +82,6 @@
 		D317DD4F1E792F9E00971751 /* AddBankViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = D317DD4C1E792F9E00971751 /* AddBankViewController.h */; };
 		D317DD501E792F9E00971751 /* AddBankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D317DD4D1E792F9E00971751 /* AddBankViewController.m */; };
 		D317DD511E792F9E00971751 /* AddBankViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D317DD4E1E792F9E00971751 /* AddBankViewController.xib */; };
-		D317DD611E79379500971751 /* ChangePasswordController.h in Headers */ = {isa = PBXBuildFile; fileRef = D317DD541E79379500971751 /* ChangePasswordController.h */; };
-		D317DD621E79379500971751 /* ChangePasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = D317DD551E79379500971751 /* ChangePasswordController.m */; };
-		D317DD631E79379500971751 /* ChangePasswordController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D317DD561E79379500971751 /* ChangePasswordController.xib */; };
-		D317DD641E79379500971751 /* LoginController.h in Headers */ = {isa = PBXBuildFile; fileRef = D317DD571E79379500971751 /* LoginController.h */; };
-		D317DD651E79379500971751 /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = D317DD581E79379500971751 /* LoginController.m */; };
-		D317DD661E79379500971751 /* LoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D317DD591E79379500971751 /* LoginController.xib */; };
-		D317DD671E79379500971751 /* RegisterController.h in Headers */ = {isa = PBXBuildFile; fileRef = D317DD5A1E79379500971751 /* RegisterController.h */; };
-		D317DD681E79379500971751 /* RegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = D317DD5B1E79379500971751 /* RegisterController.m */; };
-		D317DD691E79379500971751 /* RegisterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D317DD5C1E79379500971751 /* RegisterController.xib */; };
 		D317DD6A1E79379500971751 /* userModel.h in Headers */ = {isa = PBXBuildFile; fileRef = D317DD5E1E79379500971751 /* userModel.h */; };
 		D317DD6B1E79379500971751 /* userModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D317DD5F1E79379500971751 /* userModel.m */; };
 		D317DD6E1E7938DB00971751 /* UIControl+Extension.h in Headers */ = {isa = PBXBuildFile; fileRef = D317DD6C1E7938DB00971751 /* UIControl+Extension.h */; };
@@ -111,6 +105,12 @@
 		D3495B9D1E8F77C70038232A /* CrowdfundingListCell.h in Headers */ = {isa = PBXBuildFile; fileRef = D3495B9B1E8F77C70038232A /* CrowdfundingListCell.h */; };
 		D3495B9E1E8F77C70038232A /* CrowdfundingListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D3495B9C1E8F77C70038232A /* CrowdfundingListCell.m */; };
 		D35C15331E6D5522001F2A25 /* MenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = D35C15321E6D5522001F2A25 /* MenuView.m */; };
+		D35F37161E94F39100B7C538 /* personInformationModifyViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = D35F37131E94F39100B7C538 /* personInformationModifyViewController.h */; };
+		D35F37171E94F39100B7C538 /* personInformationModifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D35F37141E94F39100B7C538 /* personInformationModifyViewController.m */; };
+		D35F37181E94F39100B7C538 /* personInformationModifyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D35F37151E94F39100B7C538 /* personInformationModifyViewController.xib */; };
+		D3707D991E964493003941E7 /* meWantInvestmentViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = D3707D961E964493003941E7 /* meWantInvestmentViewController.h */; };
+		D3707D9A1E964493003941E7 /* meWantInvestmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3707D971E964493003941E7 /* meWantInvestmentViewController.m */; };
+		D3707D9B1E964493003941E7 /* meWantInvestmentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3707D981E964493003941E7 /* meWantInvestmentViewController.xib */; };
 		D37A0D5D1E66AC8F00FE579D /* CommentTwoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D37A0D5C1E66AC8F00FE579D /* CommentTwoCell.m */; };
 		D390F9881E5EC7C800C2C633 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = D390F9681E5EC7C800C2C633 /* MKAnnotationView+WebCache.m */; };
 		D390F9891E5EC7C800C2C633 /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = D390F96A1E5EC7C800C2C633 /* NSData+ImageContentType.m */; };
@@ -222,6 +222,9 @@
 		D3BE955B1E67FE2E00199A90 /* LiveTopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D3BE955A1E67FE2E00199A90 /* LiveTopCell.m */; };
 		D3BE955E1E68105000199A90 /* EventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D3BE955D1E68105000199A90 /* EventCell.m */; };
 		D3BE95611E681C3500199A90 /* RecommendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D3BE95601E681C3500199A90 /* RecommendCell.m */; };
+		D3CB14E91E96173E00D81CF5 /* registerView.h in Headers */ = {isa = PBXBuildFile; fileRef = D3CB14E71E96173E00D81CF5 /* registerView.h */; };
+		D3CB14EA1E96173E00D81CF5 /* registerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D3CB14E81E96173E00D81CF5 /* registerView.m */; };
+		D3CB14EC1E96175A00D81CF5 /* registerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3CB14EB1E96175A00D81CF5 /* registerView.xib */; };
 		D3D6E3D61E71308200B0986F /* CrowdfundingDetailedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D6E3D51E71308200B0986F /* CrowdfundingDetailedViewController.m */; };
 		D3D6E3D91E7131EF00B0986F /* UILabel+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D6E3D81E7131EF00B0986F /* UILabel+Extension.m */; };
 /* End PBXBuildFile section */
@@ -293,6 +296,9 @@
 		D30B20541E89117D0063EA8E /* correlateListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = correlateListModel.m; sourceTree = "<group>"; };
 		D30B20571E8911930063EA8E /* commentListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = commentListModel.h; sourceTree = "<group>"; };
 		D30B20581E8911930063EA8E /* commentListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = commentListModel.m; sourceTree = "<group>"; };
+		D30B38F11E95EBEA00DFBEA8 /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginController.h; sourceTree = "<group>"; };
+		D30B38F21E95EBEA00DFBEA8 /* LoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginController.m; sourceTree = "<group>"; };
+		D30B38F31E95EBEA00DFBEA8 /* LoginController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginController.xib; sourceTree = "<group>"; };
 		D30CC62E1E64279500BB2F25 /* CommentOneCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentOneCell.h; sourceTree = "<group>"; };
 		D30CC62F1E64279500BB2F25 /* CommentOneCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentOneCell.m; sourceTree = "<group>"; };
 		D317DCFA1E78D64400971751 /* IntegralCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntegralCell.h; sourceTree = "<group>"; };
@@ -341,15 +347,6 @@
 		D317DD4C1E792F9E00971751 /* AddBankViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddBankViewController.h; sourceTree = "<group>"; };
 		D317DD4D1E792F9E00971751 /* AddBankViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddBankViewController.m; sourceTree = "<group>"; };
 		D317DD4E1E792F9E00971751 /* AddBankViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddBankViewController.xib; sourceTree = "<group>"; };
-		D317DD541E79379500971751 /* ChangePasswordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePasswordController.h; sourceTree = "<group>"; };
-		D317DD551E79379500971751 /* ChangePasswordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordController.m; sourceTree = "<group>"; };
-		D317DD561E79379500971751 /* ChangePasswordController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangePasswordController.xib; sourceTree = "<group>"; };
-		D317DD571E79379500971751 /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginController.h; sourceTree = "<group>"; };
-		D317DD581E79379500971751 /* LoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginController.m; sourceTree = "<group>"; };
-		D317DD591E79379500971751 /* LoginController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginController.xib; sourceTree = "<group>"; };
-		D317DD5A1E79379500971751 /* RegisterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterController.h; sourceTree = "<group>"; };
-		D317DD5B1E79379500971751 /* RegisterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterController.m; sourceTree = "<group>"; };
-		D317DD5C1E79379500971751 /* RegisterController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterController.xib; sourceTree = "<group>"; };
 		D317DD5E1E79379500971751 /* userModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = userModel.h; sourceTree = "<group>"; };
 		D317DD5F1E79379500971751 /* userModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = userModel.m; sourceTree = "<group>"; };
 		D317DD6C1E7938DB00971751 /* UIControl+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIControl+Extension.h"; sourceTree = "<group>"; };
@@ -376,6 +373,12 @@
 		D3495B9C1E8F77C70038232A /* CrowdfundingListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CrowdfundingListCell.m; sourceTree = "<group>"; };
 		D35C15311E6D5522001F2A25 /* MenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuView.h; sourceTree = "<group>"; };
 		D35C15321E6D5522001F2A25 /* MenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuView.m; sourceTree = "<group>"; };
+		D35F37131E94F39100B7C538 /* personInformationModifyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = personInformationModifyViewController.h; sourceTree = "<group>"; };
+		D35F37141E94F39100B7C538 /* personInformationModifyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = personInformationModifyViewController.m; sourceTree = "<group>"; };
+		D35F37151E94F39100B7C538 /* personInformationModifyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = personInformationModifyViewController.xib; sourceTree = "<group>"; };
+		D3707D961E964493003941E7 /* meWantInvestmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = meWantInvestmentViewController.h; sourceTree = "<group>"; };
+		D3707D971E964493003941E7 /* meWantInvestmentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = meWantInvestmentViewController.m; sourceTree = "<group>"; };
+		D3707D981E964493003941E7 /* meWantInvestmentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = meWantInvestmentViewController.xib; sourceTree = "<group>"; };
 		D37A0D5B1E66AC8F00FE579D /* CommentTwoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentTwoCell.h; sourceTree = "<group>"; };
 		D37A0D5C1E66AC8F00FE579D /* CommentTwoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentTwoCell.m; sourceTree = "<group>"; };
 		D390F9671E5EC7C800C2C633 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
@@ -598,6 +601,9 @@
 		D3BE955D1E68105000199A90 /* EventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventCell.m; sourceTree = "<group>"; };
 		D3BE955F1E681C3500199A90 /* RecommendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendCell.h; sourceTree = "<group>"; };
 		D3BE95601E681C3500199A90 /* RecommendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendCell.m; sourceTree = "<group>"; };
+		D3CB14E71E96173E00D81CF5 /* registerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = registerView.h; sourceTree = "<group>"; };
+		D3CB14E81E96173E00D81CF5 /* registerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = registerView.m; sourceTree = "<group>"; };
+		D3CB14EB1E96175A00D81CF5 /* registerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = registerView.xib; sourceTree = "<group>"; };
 		D3D6E3D51E71308200B0986F /* CrowdfundingDetailedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CrowdfundingDetailedViewController.m; sourceTree = "<group>"; };
 		D3D6E3D71E7131EF00B0986F /* UILabel+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Extension.h"; sourceTree = "<group>"; };
 		D3D6E3D81E7131EF00B0986F /* UILabel+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Extension.m"; sourceTree = "<group>"; };
@@ -756,6 +762,12 @@
 				D32E373F1E7F82EB005F1C0F /* OpenCertificationViewController.xib */,
 				D32E37431E7FA627005F1C0F /* IDInformationViewController.h */,
 				D32E37441E7FA627005F1C0F /* IDInformationViewController.m */,
+				D35F37131E94F39100B7C538 /* personInformationModifyViewController.h */,
+				D35F37141E94F39100B7C538 /* personInformationModifyViewController.m */,
+				D35F37151E94F39100B7C538 /* personInformationModifyViewController.xib */,
+				D3707D961E964493003941E7 /* meWantInvestmentViewController.h */,
+				D3707D971E964493003941E7 /* meWantInvestmentViewController.m */,
+				D3707D981E964493003941E7 /* meWantInvestmentViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -780,15 +792,9 @@
 		D317DD531E79379500971751 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				D317DD541E79379500971751 /* ChangePasswordController.h */,
-				D317DD551E79379500971751 /* ChangePasswordController.m */,
-				D317DD561E79379500971751 /* ChangePasswordController.xib */,
-				D317DD571E79379500971751 /* LoginController.h */,
-				D317DD581E79379500971751 /* LoginController.m */,
-				D317DD591E79379500971751 /* LoginController.xib */,
-				D317DD5A1E79379500971751 /* RegisterController.h */,
-				D317DD5B1E79379500971751 /* RegisterController.m */,
-				D317DD5C1E79379500971751 /* RegisterController.xib */,
+				D30B38F11E95EBEA00DFBEA8 /* LoginController.h */,
+				D30B38F21E95EBEA00DFBEA8 /* LoginController.m */,
+				D30B38F31E95EBEA00DFBEA8 /* LoginController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -805,6 +811,9 @@
 		D317DD601E79379500971751 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D3CB14E71E96173E00D81CF5 /* registerView.h */,
+				D3CB14E81E96173E00D81CF5 /* registerView.m */,
+				D3CB14EB1E96175A00D81CF5 /* registerView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1342,15 +1351,15 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D317DD641E79379500971751 /* LoginController.h in Headers */,
 				D32E37451E7FA627005F1C0F /* IDInformationViewController.h in Headers */,
+				D3CB14E91E96173E00D81CF5 /* registerView.h in Headers */,
 				D307F92F1E8A3F1300945C9D /* MASConstraint.h in Headers */,
 				D307F9421E8A3F1300945C9D /* View+MASShorthandAdditions.h in Headers */,
 				D30B20591E8911930063EA8E /* commentListModel.h in Headers */,
 				D307F92C1E8A3F1300945C9D /* MASCompositeConstraint.h in Headers */,
 				D32F0E461E8E447B0071FF5F /* CrowdfundingListViewController.h in Headers */,
-				D317DD671E79379500971751 /* RegisterController.h in Headers */,
 				D307F92E1E8A3F1300945C9D /* MASConstraint+Private.h in Headers */,
+				D3707D991E964493003941E7 /* meWantInvestmentViewController.h in Headers */,
 				D307F9101E8A3F0900945C9D /* CLSlider.h in Headers */,
 				D307F93D1E8A3F1300945C9D /* NSArray+MASShorthandAdditions.h in Headers */,
 				D317DD6E1E7938DB00971751 /* UIControl+Extension.h in Headers */,
@@ -1364,7 +1373,6 @@
 				D317DD4A1E7928B300971751 /* BankCell.h in Headers */,
 				D317DD751E79394400971751 /* TKAlertCenter.h in Headers */,
 				D317DD6A1E79379500971751 /* userModel.h in Headers */,
-				D317DD611E79379500971751 /* ChangePasswordController.h in Headers */,
 				D317DD461E79283A00971751 /* MeIntegralViewController.h in Headers */,
 				D307F9351E8A3F1300945C9D /* Masonry.h in Headers */,
 				D307F9331E8A3F1300945C9D /* MASLayoutConstraint.h in Headers */,
@@ -1377,8 +1385,10 @@
 				D307F90E1E8A3F0900945C9D /* CLPlayerView.h in Headers */,
 				D30B20551E89117D0063EA8E /* correlateListModel.h in Headers */,
 				D317DD4F1E792F9E00971751 /* AddBankViewController.h in Headers */,
+				D30B38F41E95EBEA00DFBEA8 /* LoginController.h in Headers */,
 				D307F93E1E8A3F1300945C9D /* NSLayoutConstraint+MASDebugAdditions.h in Headers */,
 				D307F93B1E8A3F1300945C9D /* NSArray+MASAdditions.h in Headers */,
+				D35F37161E94F39100B7C538 /* personInformationModifyViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1493,6 +1503,7 @@
 				D3AA5D431E5D5BF9009E6868 /* LaunchScreen.storyboard in Resources */,
 				D3AA5D401E5D5BF9009E6868 /* Assets.xcassets in Resources */,
 				D32E37421E7F82EB005F1C0F /* OpenCertificationViewController.xib in Resources */,
+				D3707D9B1E964493003941E7 /* meWantInvestmentViewController.xib in Resources */,
 				D307F90B1E8A3F0900945C9D /* CLPlayer.bundle in Resources */,
 				D3A31B3E1E5D66E60088DEEC /* 1_1280x800-1.jpeg in Resources */,
 				D317DD511E792F9E00971751 /* AddBankViewController.xib in Resources */,
@@ -1501,12 +1512,12 @@
 				D317DD321E7926BD00971751 /* MePayViewController.xib in Resources */,
 				D33E8CE01E8B98180064DD02 /* ReleaseTopicViewController.xib in Resources */,
 				D3A31B3F1E5D66E60088DEEC /* 1_1280x800.jpeg in Resources */,
-				D317DD691E79379500971751 /* RegisterController.xib in Resources */,
 				D3A31B401E5D66E60088DEEC /* 4_1366x768.jpeg in Resources */,
+				D30B38F61E95EBEA00DFBEA8 /* LoginController.xib in Resources */,
+				D3CB14EC1E96175A00D81CF5 /* registerView.xib in Resources */,
 				D3A31B421E5D66E60088DEEC /* placeholder.jpeg in Resources */,
-				D317DD631E79379500971751 /* ChangePasswordController.xib in Resources */,
 				D3A31B611E5D66E60088DEEC /* MJRefresh.bundle in Resources */,
-				D317DD661E79379500971751 /* LoginController.xib in Resources */,
+				D35F37181E94F39100B7C538 /* personInformationModifyViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1549,12 +1560,12 @@
 				D3BE953C1E67C12A00199A90 /* AFHTTPSessionManager.m in Sources */,
 				D3A31C2B1E5EC2DB0088DEEC /* TAAbstractDotView.m in Sources */,
 				D3A31BCA1E5D66EA0088DEEC /* NSString+LTMD5.m in Sources */,
-				D317DD681E79379500971751 /* RegisterController.m in Sources */,
 				D317DD501E792F9E00971751 /* AddBankViewController.m in Sources */,
 				D3A31B3D1E5D66E60088DEEC /* NSString+XHMD5.m in Sources */,
 				D307F9441E8A3F1300945C9D /* ViewController+MASAdditions.m in Sources */,
 				D39C34311E7670370046D4CE /* MeInvestTableViewCell.m in Sources */,
 				D3BE955B1E67FE2E00199A90 /* LiveTopCell.m in Sources */,
+				D35F37171E94F39100B7C538 /* personInformationModifyViewController.m in Sources */,
 				D317DD2C1E7926BD00971751 /* MeBankCardViewController.m in Sources */,
 				D3A31B4B1E5D66E60088DEEC /* MJConst.m in Sources */,
 				D3A31C2C1E5EC2DB0088DEEC /* TAAnimatedDotView.m in Sources */,
@@ -1587,6 +1598,7 @@
 				D3BE953F1E67C12A00199A90 /* AFURLRequestSerialization.m in Sources */,
 				D317DD6B1E79379500971751 /* userModel.m in Sources */,
 				D390F98B1E5EC7C800C2C633 /* SDWebImageCompat.m in Sources */,
+				D3CB14EA1E96173E00D81CF5 /* registerView.m in Sources */,
 				D3BE95521E67E86C00199A90 /* WYNavIgationController.m in Sources */,
 				D3A31B391E5D66E50088DEEC /* FantasyView.m in Sources */,
 				D307F9481E8A414B00945C9D /* UIView+CLSetRect.m in Sources */,
@@ -1642,7 +1654,6 @@
 				D317DD761E79394400971751 /* TKAlertCenter.m in Sources */,
 				D390F98C1E5EC7C800C2C633 /* SDWebImageDecoder.m in Sources */,
 				D3A31BDF1E5D66EB0088DEEC /* UIColor+Hex.m in Sources */,
-				D317DD651E79379500971751 /* LoginController.m in Sources */,
 				D3A31B631E5D66E60088DEEC /* UIScrollView+MJExtension.m in Sources */,
 				D307F93A1E8A3F1300945C9D /* MASViewConstraint.m in Sources */,
 				D3A31B641E5D66E60088DEEC /* UIScrollView+MJRefresh.m in Sources */,
@@ -1656,6 +1667,7 @@
 				D390F9921E5EC7C800C2C633 /* UIImage+GIF.m in Sources */,
 				D3A31B581E5D66E60088DEEC /* MJRefreshAutoGifFooter.m in Sources */,
 				D3A31C2E1E5EC2DB0088DEEC /* TAPageControl.m in Sources */,
+				D30B38F51E95EBEA00DFBEA8 /* LoginController.m in Sources */,
 				D3A31C2D1E5EC2DB0088DEEC /* TADotView.m in Sources */,
 				D317DD081E78E96500971751 /* liveListModel.m in Sources */,
 				D3A31B4E1E5D66E60088DEEC /* MJType.m in Sources */,
@@ -1672,7 +1684,6 @@
 				D317DD0B1E78E97200971751 /* crowdListModel.m in Sources */,
 				D3D6E3D91E7131EF00B0986F /* UILabel+Extension.m in Sources */,
 				D390F9911E5EC7C800C2C633 /* UIButton+WebCache.m in Sources */,
-				D317DD621E79379500971751 /* ChangePasswordController.m in Sources */,
 				D317DD331E7926BD00971751 /* MePropertyViewController.m in Sources */,
 				D317DD3C1E7926E200971751 /* MeCell.m in Sources */,
 				D3A31B481E5D66E60088DEEC /* XHImageViewer.m in Sources */,
@@ -1681,6 +1692,7 @@
 				D390F98A1E5EC7C800C2C633 /* SDImageCache.m in Sources */,
 				D3A31B531E5D66E60088DEEC /* MJRefreshAutoFooter.m in Sources */,
 				D307F9341E8A3F1300945C9D /* MASLayoutConstraint.m in Sources */,
+				D3707D9A1E964493003941E7 /* meWantInvestmentViewController.m in Sources */,
 				D32E37461E7FA627005F1C0F /* IDInformationViewController.m in Sources */,
 				D3A31B4C1E5D66E60088DEEC /* MJFoundation.m in Sources */,
 				D3A31BF01E5D74930088DEEC /* UIView+SDAutoLayout.m in Sources */,
@@ -1831,7 +1843,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = V532VU84WT;
+				DEVELOPMENT_TEAM = "";
 				GCC_PREFIX_HEADER = "/Users/wangyang/Desktop/公司项目/zb/演娱现场/演娱现场/Main/PrefixHeader.pch";
 				INFOPLIST_FILE = "演娱现场/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1848,7 +1860,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = V532VU84WT;
+				DEVELOPMENT_TEAM = "";
 				GCC_PREFIX_HEADER = "/Users/wangyang/Desktop/公司项目/zb/演娱现场/演娱现场/Main/PrefixHeader.pch";
 				INFOPLIST_FILE = "演娱现场/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

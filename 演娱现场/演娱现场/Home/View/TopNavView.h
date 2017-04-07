@@ -32,4 +32,6 @@
 @property(nonatomic,weak)WYSearchBar *searchBar;
 //设置左面返回按钮
 - (void)setupLeftBut:(NSString *)butStr;
+//设置右边按钮
+- (void)setupRightBut:(NSString *)butStr;
 @end

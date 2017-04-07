@@ -29,6 +29,8 @@
 @interface HomeViewController ()<TopNavViewDelegate,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,HomeMenuViewDelegate>
 {
     TopNavView *_topNav;
+    //记录最后一个坐标
+    UIButton *_butY;
 }
 @property(nonatomic,weak)UITableView *tabView;
 @property (nonatomic ,strong)MenuView   *menu;
@@ -41,19 +43,24 @@
 //话题的数据
 @property(nonatomic,strong)NSMutableArray *perToppicListArray;
 //遮盖
-@property(nonatomic,weak)WyBut *cover;
+@property(nonatomic,weak)UIScrollView *cover;
 @end
 
 @implementation HomeViewController
--(WyBut *)cover{
+-(UIScrollView *)cover{
     if (!_cover) {
-        WyBut *cover = [[WyBut alloc]init];
-        [cover addTarget:self action:@selector(coverButClick) forControlEvents:UIControlEventTouchUpInside];
+        UIScrollView *cover = [[UIScrollView alloc]init];
+
         _cover =cover;
-        cover.backgroundColor = [UIColor grayColor];
-        cover.alpha = 0.5 ;
-        cover.frame = CGRectMake(0, 64, ScreenWidth, self.tabView.height - 64);
-        [self.tabView addSubview:cover];
+        cover.backgroundColor = [UIColor whiteColor];
+        cover.backgroundColor = [UIColor whiteColor];
+        cover.frame = self.view.bounds;
+        cover.y = 64;
+        UIWindow *windows = [UIApplication sharedApplication].windows.lastObject;
+        [windows addSubview:cover];
+        [self addAGesutreRecognizerForYourView];
+        [self setreMenUI];
+        
         
     }
     return _cover;
@@ -183,7 +190,6 @@
 }
 #pragma mark --------设置页面
 - (void)setupUi{
-    
     //设置顶部导航栏
     _topNav = [[TopNavView alloc]init];
     _topNav.delegate = self;
@@ -225,13 +231,19 @@
 }
 #pragma mark --------顶部自定义view的代理方法
 - (void)TopNavView:(TopNavView *)TopNavView didLeftButClick:(UIButton *)but{
-    self.cover.hidden = YES;
-    _topNav.searchBar.text = nil;
-    [self.view endEditing:YES];
+    [_topNav setupRightBut:@"北京"];
+    [_topNav.searchBar endEditing:YES];
+    [self.cover removeFromSuperview];
     [self.menu show];
 
 }
 - (void)TopNavView:(TopNavView *)TopNavView didRightButClick:(UIButton *)but{
+    if ([but.currentTitle isEqualToString:@"取消"]) {
+        [_topNav setupRightBut:@"北京"];
+        [_topNav.searchBar endEditing:YES];
+        [self.cover removeFromSuperview];
+        
+    }
     WYLog(@"%@",but.currentTitle);
 }
 #pragma mark --------tabView的代理方法
@@ -269,20 +281,22 @@
        return cell;
    }else{
        perToppicListModel *model  =self.perToppicListArray[indexPath.row];
-       if ([model.modeType isEqualToString:@"1"]) {
-            CommentThreeCell *cell = [CommentThreeCell cellWithTableView:tableView];
-           cell.model = model;
-           return cell;
-       }else if([model.modeType isEqualToString:@"2"]){
-           CommentOneCell *cell = [CommentOneCell cellWithTableView:tableView];
-               [cell setupView];
-           return cell;
-       }else{
-           CommentTwoCell *cell = [CommentTwoCell cellWithTableView:tableView];
-           [cell setupView];
-           return cell;
-       }
-
+//       if ([model.modeType isEqualToString:@"1"]) {
+//            CommentThreeCell *cell = [CommentThreeCell cellWithTableView:tableView];
+//           cell.model = model;
+//           return cell;
+//       }else if([model.modeType isEqualToString:@"2"]){
+//           CommentOneCell *cell = [CommentOneCell cellWithTableView:tableView];
+//               [cell setupView];
+//           return cell;
+//       }else{
+//           CommentTwoCell *cell = [CommentTwoCell cellWithTableView:tableView];
+//           [cell setupView];
+//           return cell;
+//       }
+                   CommentThreeCell *cell = [CommentThreeCell cellWithTableView:tableView];
+                  cell.model = model;
+                  return cell;
        
     }
    
@@ -388,13 +402,123 @@
 }
 
 #pragma mark --------textField代理方法
-- (void)textFieldDidBeginEditing:(UITextField *)textField{
+- (void)textFieldDidBeginEditing:(UITextField *)textFiel
+{
+    
+    [_topNav setupRightBut:@"取消"];
     self.cover.hidden = NO;
 }
-#pragma mark --------遮盖点击
-- (void)coverButClick{
-     self.cover.hidden = YES;
-    _topNav.searchBar.text = nil;
+-(void)setreMenUI{
+    
+ 
+    //================
+    
+    UIImageView *shuimg= [[UIImageView alloc]initWithFrame:CGRectMake(15, 17, 3, 20)];
+    shuimg.backgroundColor = [UIColor greenColor];
+    [self.cover addSubview:shuimg];
+    
+    UILabel *lab = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(shuimg.frame)+10, CGRectGetMinY(shuimg.frame), 200, 20)];
+    lab.text = @"历史记录";
+    lab.textColor = [UIColor grayColor];
+    lab.font = [UIFont systemFontOfSize:13];
+    [self.cover addSubview:lab];
+    
+    NSArray *tarr = @[@"盗墓笔记盗墓笔记盗墓笔记",@"盗墓笔记",@"空空道人谈股市",@"叶文有话要说",@"相声",@"二货一箩筐",@"单田方",];
+    
+    float butX = 15;
+    float butY = CGRectGetMaxY(shuimg.frame)+10;
+    for(int i = 0; i < tarr.count; i++){
+        
+        //宽度自适应
+        NSDictionary *fontDict = @{NSFontAttributeName:[UIFont systemFontOfSize:13]};
+        CGRect frame_W = [tarr[i] boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:fontDict context:nil];
+        
+        if (butX+frame_W.size.width+20>ScreenWidth-15) {
+            
+            butX = 15;
+            
+            butY += 55;
+        }
+        
+        UIButton *but = [[UIButton alloc]initWithFrame:CGRectMake(butX, butY, frame_W.size.width+20, 40)];
+        //搜索按钮点击
+        [but addTarget:self action:@selector(searchButClick:) forControlEvents:UIControlEventTouchUpInside];
+        [but setTitle:tarr[i] forState:UIControlStateNormal];
+        [but setTitleColor:[UIColor darkTextColor] forState:UIControlStateNormal];
+        but.titleLabel.font = [UIFont systemFontOfSize:13];
+        but.layer.cornerRadius = 8;
+        but.layer.borderColor = [UIColor lightGrayColor].CGColor;
+        but.layer.borderWidth = 1;
+        [self.cover addSubview:but];
+        
+        butX = CGRectGetMaxX(but.frame)+10;
+        _butY = but;
+    }
+    //热门搜索
+    
+    UIImageView *bottomImage= [[UIImageView alloc]initWithFrame:CGRectMake(15,CGRectGetMaxY(_butY.frame)+17, 3, 20)];
+    bottomImage.backgroundColor = [UIColor greenColor];
+    [self.cover addSubview:bottomImage];
+
+    UILabel *bottomLab = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(bottomImage.frame)+10, CGRectGetMinY(bottomImage.frame), 200, 20)];
+    bottomLab.text = @"热门搜索";
+    bottomLab.textColor = [UIColor grayColor];
+    bottomLab.font = [UIFont systemFontOfSize:13];
+    [self.cover addSubview:bottomLab];
+    
+    NSArray *bottomTarr = @[@"盗墓笔记",@"空空道人谈股市",@"盗墓笔记盗墓笔记盗墓笔记",@"叶文有话要说",@"相声",@"二货一箩筐",@"盗墓笔记盗墓笔记盗墓笔记",@"单田方"];
+    
+    float bottombutX = 15;
+    float bottombutY = CGRectGetMaxY(bottomImage.frame)+10;
+    for(int i = 0; i < bottomTarr.count; i++){
+        
+        //宽度自适应
+        NSDictionary *fontDict = @{NSFontAttributeName:[UIFont systemFontOfSize:13]};
+        CGRect frame_W = [bottomTarr[i] boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:fontDict context:nil];
+        
+        if (bottombutX+frame_W.size.width+20>ScreenWidth-15) {
+            
+            bottombutX = 15;
+            
+            bottombutY += 55;
+        }
+        
+        UIButton *but = [[UIButton alloc]initWithFrame:CGRectMake(bottombutX, bottombutY, frame_W.size.width+20, 40)];
+        [but setTitle:bottomTarr[i] forState:UIControlStateNormal];
+        [but setTitleColor:[UIColor darkTextColor] forState:UIControlStateNormal];
+        but.titleLabel.font = [UIFont systemFontOfSize:13];
+        but.layer.cornerRadius = 8;
+        but.layer.borderColor = [UIColor lightGrayColor].CGColor;
+        but.layer.borderWidth = 1;
+        [self.cover addSubview:but];
+        
+        bottombutX = CGRectGetMaxX(but.frame)+10;
+        _butY = but;
+    }
+    
+}
+
+#pragma mark --------搜索按钮点击
+- (void)searchButClick:(UIButton *)but{
+    WYLog(@"%@",but.currentTitle);
     [_topNav.searchBar endEditing:YES];
+    [self.cover removeFromSuperview];
+}
+#pragma mark --------退出输入框
+- (void)addAGesutreRecognizerForYourView
+
+{
+    
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGesturedDetected:)]; // 手势类型随你喜欢。
+    [self.cover addGestureRecognizer:tapGesture];
+    
+}
+
+- (void)tapGesturedDetected:(UITapGestureRecognizer *)recognizer
+
+{
+      [_topNav.searchBar endEditing:YES];
+    
+    
 }
 @end

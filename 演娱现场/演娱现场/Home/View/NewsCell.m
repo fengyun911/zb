@@ -15,6 +15,8 @@
 @property(nonatomic,weak)UIScrollView *scrollView;
 /**资讯的label*/
 @property(nonatomic,weak)UILabel *newsLabel;
+//记录是否创建的view
+@property(nonatomic,weak)UIView *bgView;
 @end
 @implementation NewsCell
 + (instancetype)cellWithTableView:(UITableView *)tableView{
@@ -62,10 +64,11 @@
 }
 #pragma mark --------设置view
 - (void)setupView:(NSMutableArray *)array{
-    if (array.count) {
+    if (_bgView == nil &&array.count) {
         CGFloat viewW = (ScreenWidth - WYmargin2*4) /3;
         for (int i = 0; i<array.count; i++) {
             UIView *view = [[UIView alloc]init];
+            _bgView =view;
             [self.scrollView addSubview:view];
             //图片
             UIButton *imageBut = [[UIButton alloc]init];

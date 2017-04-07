@@ -9,7 +9,8 @@
 #import "MeIntegralViewController.h"
 #import "IntegralCell.h"
 @interface MeIntegralViewController ()<UITableViewDelegate,UITableViewDataSource>
-{
+{    
+
     UIImageView *_topImageView;
 }
 @property(nonatomic,weak)UITableView *tabView;
