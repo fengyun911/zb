@@ -1843,7 +1843,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = V532VU84WT;
 				GCC_PREFIX_HEADER = "/Users/wangyang/Desktop/公司项目/zb/演娱现场/演娱现场/Main/PrefixHeader.pch";
 				INFOPLIST_FILE = "演娱现场/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1860,7 +1860,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = V532VU84WT;
 				GCC_PREFIX_HEADER = "/Users/wangyang/Desktop/公司项目/zb/演娱现场/演娱现场/Main/PrefixHeader.pch";
 				INFOPLIST_FILE = "演娱现场/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

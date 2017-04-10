@@ -9,6 +9,7 @@
 #import "CrowdfundingDetailedViewController.h"
 #import "UIImageView+WebCache.h"
 #import "PICircularProgressView.h"
+#import "meWantInvestmentViewController.h"
 @interface CrowdfundingDetailedViewController ()<LivetTopViewDelegate>
 {
     LivetTopView *_topNav;
@@ -251,7 +252,8 @@
 }
 #pragma mark --------我要投资按钮点击
 - (void)wytzButClick:(WyBut *)but{
-    [self ShowComplitedHUDWith:@"我要投资功能开发中"];
+    meWantInvestmentViewController *meWantInvestment = [[meWantInvestmentViewController alloc]init];
+    [self.navigationController pushViewController:meWantInvestment animated:YES];
 }
 #pragma mark --------底部按钮点击的方法
 - (void)bottomViewButClick:(WyBut*)but{
@@ -279,6 +281,10 @@
     }else if (but.tag == 2){
         _bottomViewLabel.text = @"青橘众筹是最专业的创意众筹平台。在这里你能找到最天才的设计、最聪明的思路、最匪夷所思的产品正在募集资金和支持者。这里是属于中国青年创业者的融资梦想家园。我们为项目发起人提供一站式项目筹资、产品运营发布、意见反馈、投资孵化等服务。自平台上线以来,已与多家企业达成开放平台的合作意向，目前已经上线起点圆梦众筹开放平台。团队成员在网站及移动互联网产品运作方面有着丰富的行业经验,对科技和文化艺术有着炽热的感情。我们希望通过我们的努力,为中国式创新创造历史,让每个人都可以用自己的梦想激励自己的人生,获得成就和人生经验。";
     }
+}
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];

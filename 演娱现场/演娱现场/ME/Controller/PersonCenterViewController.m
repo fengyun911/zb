@@ -4,7 +4,7 @@
 //
 //  Created by 汪洋 on 2017/3/7.
 //  Copyright © 2017年 yyxc. All rights reserved.
-//
+#import "MeAllViewController.h"
 #import "MeIntegralViewController.h"
 #import "PersonCenterViewController.h"
 #import "UIImageView+WebCache.h"
@@ -190,6 +190,10 @@
     
     if (but.tag == 0) {//头像点击
     [self.navigationController pushViewController:[[MeInformationViewController alloc]init] animated:YES];
+    }else if (but.tag == 1){//我的众筹
+        MeAllViewController * MeAllView = [[MeAllViewController alloc]init];
+        MeAllView.title = @"我的众筹";
+        [self.navigationController pushViewController:MeAllView animated:YES];
     }else if (but.tag == 3){//我的投资
         [self.navigationController pushViewController:[[MeInvestmentViewController alloc]init] animated:YES];
     }else if (but.tag == 4){//我的积分

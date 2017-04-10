@@ -16,11 +16,24 @@
 //liveURL: "",
 //remainTime: "",
 //followSize: 0
+//state: "",
+//title1: "陈奕迅简介",
+//title2: "",
+//countDown: "",
+//followSize: 2,
+//collectSize: 2
+//targetAmount : 5.0E7,
 @property(nonatomic,copy)NSString *liveId;
 @property(nonatomic,copy)NSString *title;
 @property(nonatomic,copy)NSString *imgUrl;
 @property(nonatomic,copy)NSString *type;
 @property(nonatomic,copy)NSString *liveURL;
 @property(nonatomic,copy)NSString *remainTime;
+@property(nonatomic,copy)NSString *title1;
+@property(nonatomic,copy)NSString *title2;
+@property(nonatomic,copy)NSString *countDown;
 @property(nonatomic,copy)NSString *followSize;
+@property(nonatomic,copy)NSString *collectSize;
+@property(nonatomic,copy)NSString *state;
+@property(nonatomic,copy)NSString *targetAmount;
 @end

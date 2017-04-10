@@ -9,5 +9,8 @@
 #import "BaseViewController.h"
 
 @interface IDInformationViewController : BaseViewController
-
+@property(nonatomic,copy)NSString *realName;
+@property(nonatomic,copy)NSString *numId;
+@property(nonatomic,copy)NSString *bankCard;
+@property(nonatomic,copy)NSString *phone;
 @end

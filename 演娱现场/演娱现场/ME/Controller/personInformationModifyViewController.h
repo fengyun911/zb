@@ -9,5 +9,17 @@
 #import "BaseViewController.h"
 
 @interface personInformationModifyViewController : BaseViewController
-@property(nonatomic,weak)UILabel *nameLabel;
+//姓名
+@property(nonatomic,strong)UILabel *nameTextLabel;
+//身份证号
+@property(nonatomic,strong)UILabel *cardTextLabel;
+//手机号码
+@property(nonatomic,strong)UILabel *phoneTextLabel;
+//邮箱
+@property(nonatomic,strong)UILabel *emailTextLabel;
+//地址
+@property(nonatomic,strong)UILabel *addressTextLabel;
+//密码
+@property(nonatomic,strong)UILabel *passwordTextLabel;
+@property(nonatomic,strong)WyBut *rightBut;
 @end

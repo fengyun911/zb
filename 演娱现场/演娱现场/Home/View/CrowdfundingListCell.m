@@ -50,10 +50,8 @@
     _topImage = topImage;
     [self.contentView addSubview:topImage];
     topImage.sd_layout.leftEqualToView(self.contentView).rightEqualToView(self.contentView).topEqualToView(self.contentView).heightRatioToView(self.contentView,0.6);
-    [topImage sd_setImageWithURL:[NSURL URLWithString:@"http://pic.58pic.com/58pic/15/27/54/92t58PICsYq_1024.jpg"] placeholderImage:nil];
     //设置标题
     UILabel *title = [[UILabel alloc]init];
-    title.text = @"千呼万唤 华语乐坛巅峰的天后";
     _title = title;
     [self.contentView addSubview:title];
     title.textColor = [UIColor colorWithHexString:@"bebebe"];
@@ -61,7 +59,6 @@
     title.sd_layout.leftSpaceToView(self.contentView,11.5).rightSpaceToView(self.contentView,11.5).topSpaceToView(topImage,WYmargin).heightRatioToView(self.contentView,0.1);
     //设置内容
     UILabel *content = [[UILabel alloc]init];
-    content.text = @"张惠妹《乌托邦2.0庆典》世界巡回演唱会北京站";
     _content = content;
     [self.contentView addSubview:content];
     content.textColor = [UIColor colorWithHexString:@"6a6a6a"];
@@ -81,9 +78,9 @@
     //左边观看按钮
     //观看数
     WyBut *look = [[WyBut alloc]init];
+    _look = look;
     look.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     [self.contentView addSubview:look];
-    [look setTitle:@"9999+" forState:UIControlStateNormal];
     [look setTitleColor:[UIColor colorWithHexString:@"6a6a6a"] forState:UIControlStateNormal];
     [look setImage:[UIImage imageNamed:@"观看-拷贝-2"] forState:UIControlStateNormal];
     look.imageEdgeInsets = UIEdgeInsetsMake(0, 11.5, 0, 0);
@@ -95,9 +92,10 @@
     //点赞数
     //观看数
     WyBut *zan = [[WyBut alloc]init];
+    _zan = zan;
     zan.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
     [self.contentView addSubview:zan];
-    [zan setTitle:@"9999+" forState:UIControlStateNormal];
+    
     [zan setTitleColor:[UIColor colorWithHexString:@"6a6a6a"] forState:UIControlStateNormal];
     [zan setImage:[UIImage imageNamed:@"心"] forState:UIControlStateNormal];
     zan.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0,11.5);
@@ -105,5 +103,12 @@
     zan.titleLabel.font = Font14;
     zan.sd_layout.rightEqualToView(self.contentView).bottomEqualToView(self.contentView).topSpaceToView(content,0).widthRatioToView(self.contentView,0.4);
 }
-
+- (void)setModel:(liveListModel *)model{
+    _model = model;
+     [_topImage sd_setImageWithURL:[NSURL URLWithString:model.imgUrl] placeholderImage:nil];
+    _title.text = model.title1;
+    _content.text = model.title2;
+    [_look setTitle:model.followSize forState:UIControlStateNormal];
+    [_zan setTitle:model.collectSize forState:UIControlStateNormal];
+}
 @end

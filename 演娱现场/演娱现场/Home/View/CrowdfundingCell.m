@@ -87,7 +87,7 @@
             crowdListModel *model = array[i];
             [imageBut sd_setBackgroundImageWithURL:[NSURL URLWithString:model.imgUrl] forState:UIControlStateNormal
                                   placeholderImage:nil];
-            imageBut.frame = CGRectMake(0, 0, viewW, viewW);
+            imageBut.frame = CGRectMake(0, 0, viewW, viewW *0.7);
             //标题
             UILabel *introductionLabel = [[UILabel alloc]init];
             [bgView addSubview:introductionLabel];
@@ -125,7 +125,7 @@
             
         }
         
-        self.scrollView.sd_layout.leftEqualToView(self.contentView).rightEqualToView(self.contentView).heightIs(42+viewW+44+WYmargin*4.5).topSpaceToView(_crowdfundingLabel,0);
+        self.scrollView.sd_layout.leftEqualToView(self.contentView).rightEqualToView(self.contentView).heightIs(42+viewW *0.7+44+WYmargin*3).topSpaceToView(_crowdfundingLabel,0);
         
         self.scrollView.contentSize = CGSizeMake(CGRectGetMaxX(self.scrollView.subviews.lastObject.frame), 0);
         //***********************高度自适应cell设置步骤************************

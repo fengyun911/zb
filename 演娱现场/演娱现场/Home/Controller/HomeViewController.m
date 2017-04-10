@@ -31,6 +31,8 @@
     TopNavView *_topNav;
     //记录最后一个坐标
     UIButton *_butY;
+    
+    LeftMenuViewDemo *_me;
 }
 @property(nonatomic,weak)UITableView *tabView;
 @property (nonatomic ,strong)MenuView   *menu;
@@ -44,6 +46,7 @@
 @property(nonatomic,strong)NSMutableArray *perToppicListArray;
 //遮盖
 @property(nonatomic,weak)UIScrollView *cover;
+
 @end
 
 @implementation HomeViewController
@@ -52,7 +55,6 @@
         UIScrollView *cover = [[UIScrollView alloc]init];
 
         _cover =cover;
-        cover.backgroundColor = [UIColor whiteColor];
         cover.backgroundColor = [UIColor whiteColor];
         cover.frame = self.view.bounds;
         cover.y = 64;
@@ -120,12 +122,13 @@
 - (void)sideList{
     [WYHttpTool getHttps:SIDE_LIST param:nil Success:^(NSDictionary *dict, BOOL success) {
         if ([dict[@"code"]isEqualToString:@"0"]) {
-            LeftMenuViewDemo *me = [[LeftMenuViewDemo alloc]initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width * 0.8, [[UIScreen mainScreen] bounds].size.height)];
-            me.leftCrowdList = dict[@"data"][@"crowdList"];
-            me.leftLiveList = dict[@"data"][@"liveList"];
-            me.customDelegate = self;
-            [me makeData];
-            self.menu = [[MenuView alloc]initWithDependencyView:self.view MenuView:me isShowCoverView:YES];
+            _me = [[LeftMenuViewDemo alloc]initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width * 0.8, [[UIScreen mainScreen] bounds].size.height)];
+            WYLog(@"%@",dict);
+            _me.leftCrowdList = dict[@"data"][@"crowdList"];
+            _me.leftLiveList = dict[@"data"][@"liveList"];
+            _me.customDelegate = self;
+            [_me makeData];
+            self.menu = [[MenuView alloc]initWithDependencyView:self.view MenuView:_me isShowCoverView:YES];
         }
     } fail:^(NSError *error) {
       
@@ -174,9 +177,11 @@
 
 }
 - (void)cycleScrollView:(NSNotification *)not{
+  
         //获取顶部数据信息判断是直播还是众筹
     NSInteger tag = [not.userInfo[@"key"] integerValue];
    bannerListModel *bannerModel = self.bannerListArray[tag];
+      WYLog(@"%@=%@",not.userInfo[@"key"],bannerModel.type);
     if ([bannerModel.type isEqualToString:@"1"]) {//类型是直播
         LiveDetailedViewController *live = [[LiveDetailedViewController alloc]init];
         liveListModel *mode = [[liveListModel alloc]init];
@@ -206,6 +211,7 @@
 - (void)setupHttps{
     [self ShowMBProgressHUD];
     [WYHttpTool postHttps:[NSString stringWithFormat:HOMEURL,1] param:nil Success:^(NSDictionary *dict, BOOL success) {
+          [self HideTheHUD];
         if ([dict[@"code"] isEqualToString:@"0"]) {//请求成功
             self.tabView.hidden = NO;
             //获取侧边栏数据
@@ -218,15 +224,16 @@
             
             self.crowdListArray = [crowdListModel objectArrayWithKeyValuesArray:dict[@"data"][@"crowdList"]];
         
-            [self HideTheHUD];
             
             [self.tabView reloadData];
             
+        }else{
+        [self ShowComplitedHUDWith:dict[@"msg"]];
         }
        
     } fail:^(NSError *error) {
         [self HideTheHUD];
-        [[TKAlertCenter defaultCenter]postAlertWithMessage:@"网络加载失败..."];
+        [self ShowComplitedHUDWith:@"网络加载失败..."];
     }];
 }
 #pragma mark --------顶部自定义view的代理方法
@@ -392,8 +399,16 @@
         if (userinfo == nil) {
             [self.navigationController pushViewController:[[LoginController alloc]init] animated:YES];
         }else{
-            CrowdfundingListViewController *crowdFundingList = [[CrowdfundingListViewController alloc]init];
-            crowdFundingList.bannerListArray = self.bannerListArray;
+             CrowdfundingListViewController *crowdFundingList = [[CrowdfundingListViewController alloc]init];
+            if (indexPath.section == 1) {
+                //直播
+                crowdFundingList.dict = _me.leftLiveList[indexPath.row];
+                crowdFundingList.isState = 0;
+            }else if (indexPath.section == 2){
+                //众筹
+                crowdFundingList.dict = _me.leftCrowdList[indexPath.row];
+                crowdFundingList.isState = 1;
+            }
             [self.navigationController pushViewController:crowdFundingList animated:YES];
         }
     
@@ -484,6 +499,9 @@
         }
         
         UIButton *but = [[UIButton alloc]initWithFrame:CGRectMake(bottombutX, bottombutY, frame_W.size.width+20, 40)];
+        //搜索按钮点击
+        [but addTarget:self action:@selector(searchButClick:) forControlEvents:UIControlEventTouchUpInside];
+        
         [but setTitle:bottomTarr[i] forState:UIControlStateNormal];
         [but setTitleColor:[UIColor darkTextColor] forState:UIControlStateNormal];
         but.titleLabel.font = [UIFont systemFontOfSize:13];

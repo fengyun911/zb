@@ -9,8 +9,22 @@
 #import "UIImageView+WebCache.h"
 #import "personInformationModifyViewController.h"
 @interface MeInformationViewController ()<UIActionSheetDelegate>
+//头像
 @property(nonatomic,weak)UIImageView *imageLabelView;
-@property(nonatomic,weak)UILabel *nameLabel;
+//姓名
+@property(nonatomic,weak)UILabel *nameTextLabel;
+//身份证号
+@property(nonatomic,weak)UILabel *cardTextLabel;
+//手机号码
+@property(nonatomic,weak)UILabel *phoneTextLabel;
+//邮箱
+@property(nonatomic,weak)UILabel *emailTextLabel;
+//地址
+@property(nonatomic,weak)UILabel *addressTextLabel;
+//密码
+@property(nonatomic,weak)UILabel *passwordTextLabel;
+//右边的按钮
+@property(nonatomic,weak)WyBut *rightBut;
 @end
 
 @implementation MeInformationViewController
@@ -25,14 +39,16 @@
 #pragma mark --------设置页面
 - (void)setupUi{
     //设置右边保存按钮
-    WyBut *rightBut = [[WyBut alloc]init];
-    rightBut.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
-    [rightBut addTarget:self action:@selector(rightButClick) forControlEvents:UIControlEventTouchUpInside];
-    rightBut.frame = CGRectMake(0, 0, 80, 44);
-    rightBut.titleLabel.font = Font18;
-    [rightBut setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [rightBut setTitle:@"保存" forState:UIControlStateNormal];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:rightBut];
+    WyBut *rightBut= [[WyBut alloc]init];
+    _rightBut = rightBut;
+    _rightBut.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+    [_rightBut addTarget:self action:@selector(rightButClick) forControlEvents:UIControlEventTouchUpInside];
+    _rightBut.frame = CGRectMake(0, 0, 80, 44);
+    _rightBut.titleLabel.font = Font18;
+    [_rightBut setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [_rightBut setTitle:@"保存" forState:UIControlStateNormal];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:_rightBut];
+    _rightBut.hidden = YES;
     //顶部的分割View
     UIView *topView = [[UIView alloc]init];
     topView.backgroundColor = [UIColor colorWithHexString:@"ececec"];
@@ -63,11 +79,11 @@
 /*****************设置姓名******************/
     //设置姓名
     UILabel *nameLabel = [self addLabel:@"    姓名"];
-    _nameLabel = nameLabel;
     nameLabel.sd_layout.topSpaceToView(imageLabelWire,0).leftEqualToView(self.view).rightEqualToView(self.view).heightIs(48.5);
     
      //设置内容
     UILabel *nameTextLabel = [self addRightLabel:@"小叶儿"];
+    _nameTextLabel =nameTextLabel;
     nameTextLabel.sd_layout.topEqualToView(nameLabel).rightSpaceToView(self.view,WYmargin*4).heightIs(48.5).widthIs(ScreenWidth/2);
     //设置右边的按钮
     WyBut *nameLabelBut = [self addWybut:1];
@@ -83,6 +99,7 @@
     cardLabel.sd_layout.topSpaceToView(nameLabelWire,0).leftEqualToView(self.view).rightEqualToView(self.view).heightIs(48.5);
     //设置内容
     UILabel * cardTextLabel = [self addRightLabel:@"340404199008160816"];
+    _cardTextLabel = cardTextLabel;
     cardTextLabel.sd_layout.topEqualToView(cardLabel).rightSpaceToView(self.view,WYmargin*4).heightIs(48.5).widthIs(ScreenWidth/2);
     //设置右边的按钮
     WyBut *cardLabelBut = [self addWybut:2];
@@ -96,6 +113,7 @@
     phoneLabel.sd_layout.topSpaceToView(cardLabelWire,0).leftEqualToView(self.view).rightEqualToView(self.view).heightIs(48.5);
     //设置内容
     UILabel * phoneTextLabel = [self addRightLabel:@"18612821523"];
+    _phoneTextLabel = phoneTextLabel;
     phoneTextLabel.sd_layout.topEqualToView(phoneLabel).rightSpaceToView(self.view,WYmargin*4).heightIs(48.5).widthIs(ScreenWidth/2);
     //设置右边的按钮
     WyBut *phoneLabelBut = [self addWybut:3];
@@ -113,6 +131,7 @@
     emailLabel.sd_layout.topSpaceToView(bottomView,0).leftEqualToView(self.view).rightEqualToView(self.view).heightIs(48.5);
     //设置内容
     UILabel * emailTextLabel = [self addRightLabel:@"554788482@qq.com"];
+    _emailTextLabel = emailTextLabel;
     emailTextLabel.sd_layout.topEqualToView(emailLabel).rightSpaceToView(self.view,WYmargin*4).heightIs(48.5).widthIs(ScreenWidth/2);
     //设置右边的按钮
     WyBut *emailLabelBut = [self addWybut:4];
@@ -126,6 +145,7 @@
     addressLabel.sd_layout.topSpaceToView(emailLabelWire,0).leftEqualToView(self.view).rightEqualToView(self.view).heightIs(48.5);
     //设置内容
     UILabel *addressTextLabel = [self addRightLabel:@"北京市 朝阳区"];
+    _addressTextLabel = addressTextLabel;
     addressTextLabel.sd_layout.topEqualToView(addressLabel).rightSpaceToView(self.view,WYmargin*4).heightIs(48.5).widthIs(ScreenWidth/2);
     //设置右边的按钮
     WyBut *addressLabelBut = [self addWybut:5];
@@ -139,9 +159,10 @@
     passwordLabel.sd_layout.topSpaceToView(addressLabelWire,0).leftEqualToView(self.view).rightEqualToView(self.view).heightIs(48.5);
     //设置内容
     UILabel *passwordTextLabel = [self addRightLabel:@"********"];
+    _passwordTextLabel = passwordTextLabel;
     passwordTextLabel.sd_layout.topEqualToView(passwordLabel).rightSpaceToView(self.view,WYmargin*4).heightIs(48.5).widthIs(ScreenWidth/2);
     //设置右边的按钮
-    WyBut *passwordLabelBut = [self addWybut:5];
+    WyBut *passwordLabelBut = [self addWybut:6];
     passwordLabelBut.sd_layout.topEqualToView(passwordLabel).leftEqualToView(self.view).rightEqualToView(self.view).heightIs(48.5);
     //分割线
     UIView *passwordLabelWire = [self addView];
@@ -190,7 +211,7 @@
 #pragma mark --------按钮点击
 - (void)wybutClick:(WyBut *)but{
     personInformationModifyViewController *personInformationModify = [[personInformationModifyViewController alloc]init];
-    
+      personInformationModify.rightBut = self.rightBut;
     
     switch (but.tag) {
         case 0:{//头像点击
@@ -200,32 +221,49 @@
         }
             break;
         case 1:{//姓名点击
-            personInformationModify.nameLabel=self.nameLabel;
+
+            personInformationModify.nameTextLabel=self.nameTextLabel;
+            personInformationModify.nameTextLabel.tag = 100;
             personInformationModify.title = @"姓名";
             [self.navigationController pushViewController:personInformationModify animated:YES];
             
         }
             break;
         case 2:{//身份证号
+            personInformationModify.cardTextLabel =self.cardTextLabel;
+            personInformationModify.cardTextLabel.tag = 100;
             personInformationModify.title = @"身份证号";
+             [self.navigationController pushViewController:personInformationModify animated:YES];
         }
             break;
         case 3:{//手机号码
+            personInformationModify.phoneTextLabel =self.phoneTextLabel;
+            personInformationModify.phoneTextLabel.tag = 100;
             personInformationModify.title = @"手机号码";
+             [self.navigationController pushViewController:personInformationModify animated:YES];
             
         }
             break;
         case 4:{//邮箱
+            personInformationModify.emailTextLabel =self.emailTextLabel;
+            personInformationModify.emailTextLabel.tag = 100;
             personInformationModify.title = @"邮箱";
+             [self.navigationController pushViewController:personInformationModify animated:YES];
 
         }
             break;
         case 5:{//地址
+            personInformationModify.addressTextLabel =self.addressTextLabel;
+            personInformationModify.addressTextLabel.tag = 100;
              personInformationModify.title = @"地址";
+             [self.navigationController pushViewController:personInformationModify animated:YES];
         }
             break;
         case 6:{//密码
-            
+            personInformationModify.passwordTextLabel =self.passwordTextLabel;
+            personInformationModify.passwordTextLabel.tag = 100;
+            personInformationModify.title = @"密码";
+            [self.navigationController pushViewController:personInformationModify animated:YES];
         }
             break;
             
@@ -237,7 +275,7 @@
 #pragma mark--------保存按钮点击
 - (void)rightButClick{
     //发送网络请求
-    
+    _rightBut.hidden = YES;
 }
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
     
@@ -273,6 +311,7 @@
     //设置返回图片的尺寸
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
     self.imageLabelView.image = image;
+    _rightBut.hidden = NO;
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
 

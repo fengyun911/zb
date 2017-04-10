@@ -14,13 +14,14 @@
 #import "liveDetailModel.h"
 #import "correlateListModel.h"
 #import "commentListModel.h"
-
+#import "LoginController.h"
 #import "UIView+CLSetRect.h"
 #import "CLPlayerView.h"
 #import  "Masonry.h"
 @interface LiveDetailedViewController ()<LivetTopViewDelegate,UITableViewDelegate,UITableViewDataSource,VideoDelegate>
 {
     LivetTopView *_topNav;
+   
 }
 @property(nonatomic,weak)UITableView *tabView;
 //其它推荐
@@ -31,7 +32,7 @@
 /**CLplayer*/
 @property (nonatomic,weak) CLPlayerView *playerView;
 /**记录Cell*/
-@property (nonatomic,assign) LiveTopCell *cell;
+@property (nonatomic,weak) LiveTopCell *cell;
 @end
 
 @implementation LiveDetailedViewController
@@ -93,7 +94,6 @@
     
     //我要众筹按钮点击
      [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(meCrowdfundingButClick:) name:@"meCrowdfundingButClick" object:nil];
-    
   
 }
 //我要众筹
@@ -284,51 +284,67 @@
 #pragma mark - 点击播放代理
 - (void)PlayVideoWithCell:(LiveTopCell  *)cell;
 {
+    
+    
     //记录被点击的Cell
     _cell = cell;
     
-    //销毁播放器
-    [_playerView destroyPlayer];
-    _playerView = nil;
-    
-    CLPlayerView *playerView = [[CLPlayerView alloc] initWithFrame:CGRectMake(0, 0, cell.CLwidth, cell.CLheight)];
-    
-    _playerView = playerView;
-    [cell.contentView addSubview:_playerView];
-    
-    
-    //根据旋转自动支持全屏，默认支持
-    //        _playerView.autoFullScreen = NO;
-    //重复播放，默认不播放
-    //    _playerView.repeatPlay     = YES;
-    //如果播放器所在页面支持横屏，需要设置为Yes，不支持不需要设置(默认不支持)
-    //        _playerView.isLandscape    = YES;
-    //设置等比例全屏拉伸，多余部分会被剪切
-    //    _playerView.fillMode = ResizeAspectFill;
-    
-    //视频地址
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        _playerView.url = [NSURL URLWithString:@"http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"];
-        //播放
-                [_playerView playVideo];
+ //判断是否登陆，没有登录到登陆页面
+    NSDictionary * userinfo=[[NSUserDefaults standardUserDefaults]objectForKey:@"user"];
+    if (userinfo == nil) {
+        //弹出登陆页面
+        LoginController * login = [[LoginController alloc]init];
+        [self.navigationController pushViewController:login  animated:YES];
+    }else{//用户已经登陆
+        //发送网络请求判断是否已经购买
+//        NSDictionary *dict = 
+//    [WYHttpTool postHttps:WHETHERWATCH param:<#(NSDictionary *)#> Success:<#^(NSDictionary *dict, BOOL success)success#> fail:<#^(NSError *error)fail#>]
         
-    });
-    
-    //返回按钮点击事件回调
-    [_playerView backButton:^(UIButton *button) {
-        //销毁播放器
-        //[_playerView destroyPlayer];
-        //_playerView = nil;
-    }];
-    
-    //播放完成回调
-    [_playerView endPlay:^{
         
         //销毁播放器
         [_playerView destroyPlayer];
         _playerView = nil;
-        NSLog(@"播放完成");
-    }];
+        
+        CLPlayerView *playerView = [[CLPlayerView alloc] initWithFrame:CGRectMake(0, 0, cell.CLwidth, cell.CLheight)];
+        
+        _playerView = playerView;
+        [cell.contentView addSubview:_playerView];
+        
+        
+        //根据旋转自动支持全屏，默认支持
+        //        _playerView.autoFullScreen = NO;
+        //重复播放，默认不播放
+        //    _playerView.repeatPlay     = YES;
+        //如果播放器所在页面支持横屏，需要设置为Yes，不支持不需要设置(默认不支持)
+        //        _playerView.isLandscape    = YES;
+        //设置等比例全屏拉伸，多余部分会被剪切
+        //    _playerView.fillMode = ResizeAspectFill;
+        
+        //视频地址
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            _playerView.url = [NSURL URLWithString:@"http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"];
+            //播放
+            [_playerView playVideo];
+            
+        });
+        
+        //返回按钮点击事件回调
+        [_playerView backButton:^(UIButton *button) {
+            //销毁播放器
+            //[_playerView destroyPlayer];
+            //_playerView = nil;
+        }];
+        
+        //播放完成回调
+        [_playerView endPlay:^{
+            
+            //销毁播放器
+            [_playerView destroyPlayer];
+            _playerView = nil;
+            NSLog(@"播放完成");
+        }];
+
+    }
     
 }
 - (void)viewDidDisappear:(BOOL)animated{

@@ -55,6 +55,7 @@
 }
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index
 {
+    
     //发送通知告诉点击了哪个图片
     NSDictionary *dict = @{@"key":@(index)};
     [[NSNotificationCenter defaultCenter]postNotificationName:@"cycleScrollView" object:nil userInfo:dict];

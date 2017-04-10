@@ -83,6 +83,29 @@
             [[NSUserDefaults standardUserDefaults]setObject:@"yes" forKey:@"UserInfo"];
             //强制写入
             [[NSUserDefaults standardUserDefaults] synchronize];
+            //请求登陆登陆接口
+            NSDictionary *loginDict = @{@"phoneNum":dict[@"phoneNum"],@"password":dict[@"password"]};
+            [WYHttpTool getHttps:LOGIN param:loginDict Success:^(NSDictionary *dict, BOOL success) {
+                [self HideTheHUD];
+                WYLog(@"%@",dict);
+                if ([[NSString stringWithFormat:@"%@",dict[@"code"]] isEqualToString:@"0"]) {
+                    
+                    [[NSUserDefaults standardUserDefaults]
+                     setObject:dict[@"data"] forKey:@"user"];
+                    //强制写入
+                    [[NSUserDefaults standardUserDefaults] synchronize];
+                    [self.navigationController popViewControllerAnimated:YES];
+                }else{
+                    [self ShowComplitedHUDWith:dict[@"msg"]];
+                }
+                
+            } fail:^(NSError *error) {
+                [self HideTheHUD];
+                [self ShowComplitedHUDWith:@"网络加载失败..."];
+            }];
+
+            
+            
         }else{
             [self ShowComplitedHUDWith:dict[@"msg"]];
         }
@@ -135,7 +158,7 @@
                  setObject:dict[@"data"] forKey:@"user"];
                 //强制写入
                 [[NSUserDefaults standardUserDefaults] synchronize];
-                 [self.navigationController popToRootViewControllerAnimated:YES];
+                 [self.navigationController popViewControllerAnimated:YES];
             }else{
                 [self ShowComplitedHUDWith:dict[@"msg"]];
             }

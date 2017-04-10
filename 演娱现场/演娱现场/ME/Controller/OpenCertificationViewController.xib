@@ -11,6 +11,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OpenCertificationViewController">
             <connections>
+                <outlet property="bankCard" destination="Pxq-nq-6rm" id="ovx-Lk-uUw"/>
+                <outlet property="numId" destination="K6m-Ic-Gzd" id="p5h-jU-2UE"/>
+                <outlet property="phone" destination="u4g-yJ-JdV" id="ZpB-80-8dx"/>
+                <outlet property="realName" destination="QFg-N7-YuK" id="dPe-Hd-nCe"/>
+                <outlet property="serviceBut" destination="Q2E-Mx-ZJm" id="nL0-lm-gq1"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -165,27 +170,23 @@
                                     <color key="textColor" red="0.0" green="0.44313725490196076" blue="0.92549019607843142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="highlightedColor" red="0.0" green="0.44313725490196076" blue="0.92549019607843142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q2E-Mx-ZJm" userLabel="我已阅读并且同意">
-                                    <rect key="frame" x="20" y="292" width="150" height="30"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q2E-Mx-ZJm" userLabel="我已阅读并且同意">
+                                    <rect key="frame" x="20" y="292" width="160" height="30"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="30" id="LOz-Tp-MYV"/>
-                                        <constraint firstAttribute="width" constant="150" id="kLw-b8-wPV"/>
+                                        <constraint firstAttribute="width" constant="160" id="kLw-b8-wPV"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                    <state key="normal" title="我已阅读并同意">
+                                    <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <state key="normal" title="我已阅读并同意" image="checkbox_unselected">
                                         <color key="titleColor" red="0.70588235294117641" green="0.70588235294117641" blue="0.70588235294117641" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Lg-db-ghg" userLabel="选择按钮">
-                                    <rect key="frame" x="25" y="299" width="15" height="15"/>
-                                    <color key="backgroundColor" red="0.0" green="0.44313725490196076" blue="0.92549019607843142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="15" id="ObX-A6-5LJ"/>
-                                        <constraint firstAttribute="width" constant="15" id="PQq-Kw-BnD"/>
-                                    </constraints>
+                                    <state key="selected" image="checkbox_selected"/>
+                                    <connections>
+                                        <action selector="serviceButClick:" destination="-1" eventType="touchUpInside" id="llU-Tq-yad"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o5H-fq-6tt" userLabel="服务协议">
-                                    <rect key="frame" x="170" y="292" width="100" height="30"/>
+                                    <rect key="frame" x="180" y="292" width="100" height="30"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="30" id="fvo-Y4-K7V"/>
                                         <constraint firstAttribute="width" constant="100" id="pLh-E6-2fF"/>
@@ -219,8 +220,6 @@
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="zwI-v3-IHI" secondAttribute="trailing" id="10A-sQ-Rri"/>
                                 <constraint firstItem="mVL-qN-XWv" firstAttribute="leading" secondItem="dyu-jE-oTL" secondAttribute="leading" constant="20" id="29r-LP-cJQ"/>
-                                <constraint firstItem="6Lg-db-ghg" firstAttribute="top" secondItem="zBn-eL-L6A" secondAttribute="bottom" constant="37" id="CqP-Fd-cEh"/>
-                                <constraint firstItem="6Lg-db-ghg" firstAttribute="leading" secondItem="dyu-jE-oTL" secondAttribute="leading" constant="25" id="J6n-0z-py6"/>
                                 <constraint firstItem="ptD-t2-ev6" firstAttribute="top" secondItem="o5H-fq-6tt" secondAttribute="bottom" constant="20" id="N0f-eS-yTI"/>
                                 <constraint firstAttribute="trailing" secondItem="zBn-eL-L6A" secondAttribute="trailing" id="OSH-2u-XBC"/>
                                 <constraint firstAttribute="height" constant="700" id="UAe-ib-4w7"/>
@@ -257,4 +256,8 @@
             <point key="canvasLocation" x="26.5" y="51.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="checkbox_selected" width="21" height="21"/>
+        <image name="checkbox_unselected" width="21" height="21"/>
+    </resources>
 </document>

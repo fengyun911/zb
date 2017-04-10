@@ -9,6 +9,8 @@
 #import "BaseViewController.h"
 
 @interface CrowdfundingListViewController : BaseViewController
-//轮播图的数据
-@property(nonatomic,strong)NSMutableArray *bannerListArray;
+//请求的列表数据
+@property(nonatomic,strong)NSDictionary *dict;
+//记录是直播还是众筹
+@property(nonatomic,assign)BOOL isState;
 @end

@@ -78,14 +78,14 @@
             liveListModel *model = array[i];
             [imageBut sd_setBackgroundImageWithURL:[NSURL URLWithString:model.imgUrl] forState:UIControlStateNormal
                                   placeholderImage:nil];
-            imageBut.frame = CGRectMake(0, 0, viewW, viewW);
+            imageBut.frame = CGRectMake(0, 0, viewW, viewW*0.7);
             //标题
             UILabel *nameLabel = [[UILabel alloc]init];
             [view addSubview:nameLabel];
             nameLabel.text = model.title;
             nameLabel.font = CFont16;
             nameLabel.textColor = [UIColor whiteColor];
-            nameLabel.sd_layout.leftSpaceToView(view,WYmargin2).topSpaceToView(imageBut,0).rightSpaceToView(view,WYmargin2).heightIs(20);
+            nameLabel.sd_layout.leftSpaceToView(view,WYmargin2).topSpaceToView(imageBut,WYmargin2).rightSpaceToView(view,WYmargin2).heightIs(20);
             //观看数
             WyBut *quantityBut = [[WyBut alloc]init];
             [view addSubview:quantityBut];
@@ -95,12 +95,12 @@
             quantityBut.titleEdgeInsets = UIEdgeInsetsMake(0, WYmargin2, 0, 0);
             quantityBut.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, WYmargin2);
             quantityBut.titleLabel.font = Font14;
-            quantityBut.sd_layout.leftEqualToView(nameLabel).rightEqualToView(nameLabel).heightIs(14).topSpaceToView(nameLabel,0);
+            quantityBut.sd_layout.leftEqualToView(nameLabel).rightEqualToView(nameLabel).heightIs(14).topSpaceToView(nameLabel,WYmargin2);
             
-            view.frame = CGRectMake(WYmargin+ i *(WYmargin+viewW), 0, viewW, viewW);
+            view.frame = CGRectMake(WYmargin+ i *(WYmargin+viewW), 0, viewW, viewW*0.7);
             
         }
-        self.scrollView.sd_layout.topSpaceToView(_newsLabel,0).leftEqualToView(self.contentView).widthRatioToView(self.contentView,1).heightIs(42+viewW);
+        self.scrollView.sd_layout.topSpaceToView(_newsLabel,0).leftEqualToView(self.contentView).widthRatioToView(self.contentView,1).heightIs(42+viewW*0.8);
         
         self.scrollView.contentSize = CGSizeMake(CGRectGetMaxX(self.scrollView.subviews.lastObject.frame)+WYmargin, 0);
         

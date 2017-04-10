@@ -17,6 +17,14 @@
 #import "UIControl+Extension.h"
 #import "TKAlertCenter.h"
 /********************网络请求*****************/
+//我的认证
+#define  UPLOADAUTHENINFO [ZBURL stringByAppendingString:@"mobile/uploadAuthenInfo"]
+//是否需要购买直播
+#define  WHETHERWATCH [ZBURL stringByAppendingString:@"mobile/whetherWatch.do"]
+//获取直播分类列表(侧边栏)
+#define GETLIVELIST [ZBURL stringByAppendingString:@"homePage/getLiveList.do"]
+//获取众筹分类列表(侧边栏)
+#define GETCROWDLIST [ZBURL stringByAppendingString:@"homePage/getCrowdList.do"]
 //发布话题
 #define SAVETOPIC [ZBURL stringByAppendingString:@"topic/saveTopic.do"]
 //获取首页数据
